@@ -51,14 +51,3 @@ class Page:
         actual_text = actual_text.lower()
         assert expected_text in actual_text, \
             f"Expected {expected_text} not in '{actual_text}'"
-
-    def verify_url(self, expected_url):
-        actual_url = self.driver.current_url
-        assert expected_url == actual_url, \
-            f"Expected '{expected_url}' but got '{actual_url}'"
-
-    def verify_partial_url(self, expected_partial_url):
-        # actual_url = self.driver.current_url
-        self.wait.until(
-            EC.url_contains(expected_partial_url),
-            message=f"Expected '{expected_partial_url}' not found")
