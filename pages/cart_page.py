@@ -8,4 +8,4 @@ class CartPage(Page):
     PRODUCT_DESCRIPTION = (By.CSS_SELECTOR, "[data-test='cartItem-title']")
 
     def verify_cart_item(self, product):
-        self.verify_partial_text(product, *self.PRODUCT_DESCRIPTION)
+        self.verify_partial_texts(product, *self.PRODUCT_DESCRIPTION)

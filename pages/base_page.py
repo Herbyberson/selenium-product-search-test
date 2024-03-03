@@ -45,9 +45,15 @@ class Page:
         assert expected_text == actual_text, \
             f"Expected '{expected_text}' but got '{actual_text}'"
 
-    def verify_partial_text(self, expected_text, *locator):
-        expected_text = expected_text.lower()
+    def verify_partial_texts(self, expected_texts, *locator):
         actual_text = self.find_element(*locator).text
         actual_text = actual_text.lower()
-        assert expected_text in actual_text, \
-            f"Expected {expected_text} not in '{actual_text}'"
+
+        for expected_text in expected_texts:
+            expected_text = expected_text.lower()
+            if expected_text in actual_text:
+                # If any of the expected texts is found, we have verified product
+                return
+
+        # If none of the expected texts is found, we're raising exception
+        raise AssertionError(f"None of the expected texts {expected_texts} found in '{actual_text}'")

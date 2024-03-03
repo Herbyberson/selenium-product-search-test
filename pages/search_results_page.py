@@ -6,7 +6,7 @@ from time import sleep
 class SearchResultsPage(Page):
     SEARCH_RESULTS_HEADER = (By.XPATH, "//div[@data-test='resultsHeading']")
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "[id*='addToCartButton']")
-    SIDE_NAV_ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, "[data-test='orderPickupButton']")
+    SIDE_NAV_ADD_TO_CART_BUTTON = (By.XPATH, "//div[@style='display: flex;']//button[@type='button']")
     VIEW_CART_PAGE = (By.XPATH, "//a[@href='/cart']")
 
     def click_add_to_cart_button(self):
